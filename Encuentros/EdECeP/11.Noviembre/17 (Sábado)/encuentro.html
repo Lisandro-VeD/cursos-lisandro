@@ -20,12 +20,14 @@
   .file-item .info { flex: 1; min-width: 0; }
   .file-item .name { font-size: 14px; font-weight: 600; color: var(--texto); }
   .file-item .meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .file-item .btns { display: flex; gap: 6px; flex: 0 0 auto; }
   .file-item .btn-dl {
     height: 32px; padding: 0 12px; border-radius: 8px;
     background: var(--subrayado); color: #FBEFDF;
     font-size: 12px; font-weight: 600; border: none; cursor: pointer;
-    display: inline-flex; align-items: center; gap: 4px; flex: 0 0 auto;
+    display: inline-flex; align-items: center; gap: 4px;
   }
+  .file-item .btn-dl.pdf { background: var(--acento); }
   .file-item .btn-dl:hover { opacity: 0.85; }
   .qr-section {
     margin-top: 24px; padding: 16px;
@@ -41,6 +43,20 @@
     border-radius: 8px; font-size: 12px; color: var(--muted); text-align: center;
   }
   .expiry .date { font-weight: 700; color: var(--acento); }
+  .social-section {
+    margin-top: 20px; padding: 16px;
+    background: var(--tarjeta); border: 1px solid var(--borde);
+    border-radius: 12px; text-align: center;
+  }
+  .social-section h3 { font-family: Georgia, serif; font-size: 16px; margin-bottom: 12px; color: var(--subrayado); }
+  .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+  .social-links a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 999px;
+    background: var(--fondo); border: 1px solid var(--borde);
+    color: var(--texto); text-decoration: none; font-size: 13px; font-weight: 600;
+  }
+  .social-links a:hover { background: var(--acento); color: #fff; }
   .password-gate {
     position: fixed; inset: 0; background: var(--fondo);
     display: flex; align-items: center; justify-content: center;
@@ -62,7 +78,7 @@
 </style>
 </head>
 <body data-theme="claro">
-<!-- Password gate (optional) -->
+<!-- Password gate -->
 <div class="password-gate" id="password-gate">
   <h2>Encuentro privado</h2>
   <p style="color:var(--muted);font-size:13px;">Ingresá la contraseña para acceder</p>
@@ -74,7 +90,6 @@
 <div class="app hidden" id="main-content">
   <aside class="sidebar">
     <div class="header"><h1><span class="short">VeD</span> Encuentro</h1></div>
-    <div class="theme-bar" id="theme-bar"></div>
     <div style="font-size:13px;color:var(--muted);margin-top:12px;">
       Archivos del encuentro.<br>
       Escaneá el QR para acceder.
@@ -83,40 +98,52 @@
   <main class="main">
     <div class="encuentro-wrap">
       <h1>Archivos del encuentro</h1>
-      <p class="sub">Descargá los archivos que necesitás para el encuentro. También podés escanear el QR para acceder desde tu celular.</p>
+      <p class="sub">Descargá los archivos que necesitás para el encuentro. Cada documento está disponible en DOCX y PDF. También podés escanear el QR para acceder desde tu celular.</p>
 
       <ul class="file-list" id="file-list">
         <li class="file-item">
           <div class="icon">📄</div>
           <div class="info">
-            <div class="name">CONSOLACIÓN.docx</div>
-            <div class="meta">DOCX · 17 KB</div>
+            <div class="name">CONSOLACIÓN</div>
+            <div class="meta">DOCX · PDF</div>
           </div>
-          <a href="Archivos a dar/CONSOLACIÓN.docx" download class="btn-dl">Descargar</a>
+          <div class="btns">
+            <a href="Archivos a dar/CONSOLACIÓN.docx" download class="btn-dl">DOCX</a>
+            <a href="Archivos a dar/CONSOLACIÓN.pdf" download class="btn-dl pdf">PDF</a>
+          </div>
         </li>
         <li class="file-item">
           <div class="icon">📄</div>
           <div class="info">
-            <div class="name">DESOLACIÓN.docx</div>
-            <div class="meta">DOCX · 16 KB</div>
+            <div class="name">DESOLACIÓN</div>
+            <div class="meta">DOCX · PDF</div>
           </div>
-          <a href="Archivos a dar/DESOLACIÓN.docx" download class="btn-dl">Descargar</a>
+          <div class="btns">
+            <a href="Archivos a dar/DESOLACIÓN.docx" download class="btn-dl">DOCX</a>
+            <a href="Archivos a dar/DESOLACIÓN.pdf" download class="btn-dl pdf">PDF</a>
+          </div>
         </li>
         <li class="file-item">
           <div class="icon">📄</div>
           <div class="info">
-            <div class="name">Discernimiento.docx</div>
-            <div class="meta">DOCX · 18 KB</div>
+            <div class="name">Discernimiento</div>
+            <div class="meta">DOCX · PDF</div>
           </div>
-          <a href="Archivos a dar/Discernimiento.docx" download class="btn-dl">Descargar</a>
+          <div class="btns">
+            <a href="Archivos a dar/Discernimiento.docx" download class="btn-dl">DOCX</a>
+            <a href="Archivos a dar/Discernimiento.pdf" download class="btn-dl pdf">PDF</a>
+          </div>
         </li>
         <li class="file-item">
           <div class="icon">📄</div>
           <div class="info">
-            <div class="name">Esquema consolación-desolación.docx</div>
-            <div class="meta">DOCX · 15 KB</div>
+            <div class="name">Esquema consolación-desolación</div>
+            <div class="meta">DOCX · PDF</div>
           </div>
-          <a href="Archivos a dar/Esquema consolación-desolación.docx" download class="btn-dl">Descargar</a>
+          <div class="btns">
+            <a href="Archivos a dar/Esquema consolación-desolación.docx" download class="btn-dl">DOCX</a>
+            <a href="Archivos a dar/Esquema consolación-desolación.pdf" download class="btn-dl pdf">PDF</a>
+          </div>
         </li>
       </ul>
 
@@ -129,14 +156,24 @@
       <div class="expiry">
         Esta página estará disponible hasta el <span class="date" id="expiry-date"></span>
       </div>
+
+      <div class="social-section">
+        <h3>Seguinos</h3>
+        <div class="social-links">
+          <a href="https://whatsapp.com/channel/0029VedBu48AkVS1wDZRB3x" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a href="https://www.facebook.com/cursos.lisandro" target="_blank" rel="noopener">📘 Facebook</a>
+          <a href="https://www.instagram.com/cursos.lisandro.ved" target="_blank" rel="noopener">📷 Instagram</a>
+          <a href="https://www.youtube.com/@cursos_lisandro" target="_blank" rel="noopener">▶️ YouTube</a>
+        </div>
+      </div>
     </div>
   </main>
 </div>
 
 <script>
   // ---------- Password gate ----------
-  // La contraseña está ofuscada (no legible a simple vista)
-  const _k = [118, 101, 100, 50, 48, 50, 54]; // "ved2026" — cambiar por la contraseña real
+  // Contraseña: "lisandro" (ofuscada como códigos ASCII)
+  const _k = [108, 105, 115, 97, 110, 100, 114, 111];
   function checkPassword() {
     const input = document.getElementById('pass-input').value;
     if (input === String.fromCharCode(..._k)) {
@@ -147,7 +184,6 @@
       document.getElementById('pass-error').classList.remove('hidden');
     }
   }
-  // Si ya se autenticó antes, saltar el gate
   if (localStorage.getItem('ved_encuentro_auth') === '1') {
     document.getElementById('password-gate').classList.add('hidden');
     document.getElementById('main-content').classList.remove('hidden');
@@ -160,34 +196,7 @@
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
   });
 
-  // ---------- Theme bar ----------
-  const THEMES = [
-    { id: 'claro', label: 'Claro' },
-    { id: 'crema', label: 'Crema' },
-    { id: 'sepia', label: 'Sepia' },
-    { id: 'atardecer', label: 'Atardecer' },
-    { id: 'oscuro', label: 'Oscuro' },
-  ];
-  let currentTheme = localStorage.getItem('ved_theme') || 'claro';
-  function applyTheme(id) {
-    currentTheme = id;
-    document.body.setAttribute('data-theme', id);
-    document.querySelectorAll('.theme-btn').forEach(b => b.classList.toggle('active', b.dataset.theme === id));
-    localStorage.setItem('ved_theme', id);
-  }
-  const bar = document.getElementById('theme-bar');
-  THEMES.forEach(t => {
-    const btn = document.createElement('button');
-    btn.className = 'theme-btn';
-    btn.dataset.theme = t.id;
-    btn.textContent = t.label;
-    btn.onclick = () => applyTheme(t.id);
-    bar.appendChild(btn);
-  });
-  applyTheme(currentTheme);
-
-  // ---------- QR Code (simple, using a free API) ----------
-  // Genera un QR con la URL actual de la página
+  // ---------- QR Code (using a free API) ----------
   const qrUrl = encodeURIComponent(window.location.href);
   const qrImg = document.createElement('img');
   qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + qrUrl;
